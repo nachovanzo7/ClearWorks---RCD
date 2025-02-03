@@ -10,6 +10,7 @@ import Clientes from "./pages/Clientes";
 import Coordinaciones from "./pages/Coordinaciones";
 
 import "./styles/App.css";
+import AltaCliente from "./pages/AltaClientes";
 
 const App = () => {
   const [headerOpacity, setHeaderOpacity] = useState(1);
@@ -41,6 +42,13 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Clientes />} />
               <Route path="/coordinaciones" element={<Coordinaciones />} />
+              {/*<Route path="/transportistas" element={<Transportistas />} />
+              <Route path="/empresas" element={<Empresas />} />
+              <Route path="/detallescliente" element={<DetallesCliente />} />
+              <Route path="/miperfil" element={<Miperfil />} />*/}
+              <Route path="/altacliente" element={<AltaCliente />} />
+
+
             </Routes>
           </Body>
         </div>

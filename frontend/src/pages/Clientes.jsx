@@ -3,6 +3,7 @@ import React from 'react';
 import Tables from '../components/Table'
 import { Button, AddIcon } from 'evergreen-ui'
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 
 const handleFilterChange = (e) => {
@@ -23,10 +24,12 @@ const Clientes = () => {
     <div>
       <h1>Listado clientes</h1>
       <Tables></Tables>
-      <Button marginRight={16} intent="success">
-        <AddIcon />
-        Añadir
-      </Button>
+      <Link to="/altacliente">
+        <Button marginRight={16} intent="success">
+          <AddIcon />
+          Añadir
+        </Button>
+      </Link>
     </div>
   );
 };

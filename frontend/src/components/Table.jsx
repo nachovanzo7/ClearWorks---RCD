@@ -23,13 +23,17 @@ const Tables = () => {
           onChange={(value) => setFilter(value)} 
           placeholder='Filtrar por nombre...'
         />
-        <Table.TextHeaderCell>Last Activity</Table.TextHeaderCell>
-        <Table.TextHeaderCell>LTV</Table.TextHeaderCell>
+        <Table.TextHeaderCell>Fecha de ingreso</Table.TextHeaderCell>
+        <Table.TextHeaderCell>Cantidad de obras</Table.TextHeaderCell>
       </Table.Head>
       <Table.Body height={240}>
         {nombreFiltrado.map((profile) => (
           <Table.Row key={profile.id} isSelectable onSelect={() => alert(profile.name)}>
-            <Table.TextCell>{profile.name}</Table.TextCell>
+            <Table.TextCell>
+            <Link to={`/cliente/${profile.id}`} style={{ textDecoration: 'none', color: 'blue' }}>
+                {profile.name}
+              </Link>
+              {profile.name}</Table.TextCell>
             <Table.TextCell>{profile.lastActivity}</Table.TextCell>
             <Table.TextCell isNumber>{profile.ltv}</Table.TextCell>
           </Table.Row>
