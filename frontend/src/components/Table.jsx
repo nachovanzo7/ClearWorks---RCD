@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Table } from 'evergreen-ui';
+import { Link } from 'react-router-dom';
+
 
 const profiles = [
     { id: 1, name: 'Pedro', lastActivity: '2022-12-01', ltv: 50 },
