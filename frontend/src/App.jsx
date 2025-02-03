@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Header from "./components/Header";
+import Drawer from "./components/Drawer";
+import Body from "./components/body";
+
+import Clientes from "./pages/Clientes";
+import Coordinaciones from "./pages/Coordinaciones";
+
+import "./styles/App.css";
+
+const App = () => {
+  const [headerOpacity, setHeaderOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      let opacidadNueva = 1 - scrollTop / 200;
+      if (opacidadNueva < 0.5) opacidadNueva = 0.5;
+
+      setHeaderOpacity(opacidadNueva);
+      document.documentElement.style.setProperty(
+        "--header-fade-opacity",
+        opacidadNueva
+      );
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app-container">
+        <Header opacity={headerOpacity} />
+        <div className="main-content">
+          <Drawer />
+          <Body>
+            <Routes>
+              <Route path="/" element={<Clientes />} />
+              <Route path="/coordinaciones" element={<Coordinaciones />} />
+            </Routes>
+          </Body>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;
