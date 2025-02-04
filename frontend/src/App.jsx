@@ -8,6 +8,8 @@ import Body from "./components/body";
 
 import Clientes from "./pages/Clientes";
 import Coordinaciones from "./pages/Coordinaciones";
+import DetallesCliente from './pages/DetallesCliente';
+
 
 import "./styles/App.css";
 import AltaCliente from "./pages/AltaClientes";
@@ -44,9 +46,9 @@ const App = () => {
               <Route path="/coordinaciones" element={<Coordinaciones />} />
               {/*<Route path="/transportistas" element={<Transportistas />} />
               <Route path="/empresas" element={<Empresas />} />
-              <Route path="/detallescliente" element={<DetallesCliente />} />
               <Route path="/miperfil" element={<Miperfil />} />*/}
               <Route path="/altacliente" element={<AltaCliente />} />
+              <Route path="/detallescliente" element={<DetallesCliente />} />
 
 
             </Routes>

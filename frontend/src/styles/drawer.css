@@ -5,7 +5,7 @@
     width: var(--drawer-width);
     min-width: var(--drawer-width);
     bottom: 0;
-    background-color: #ffffff;
+    background-color: #d1e063;
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
@@ -73,7 +73,7 @@
       padding: 10px;
       margin-bottom: 10px;
       border-bottom: none;
-      background: linear-gradient(145deg, #d1e063, #a8c948); /* Gradiente para efecto 3D */
+      background: linear-gradient(145deg, #BEDAA1, #abbf9d); /* Gradiente para efecto 3D */
       color: #000;
       text-decoration: none;
       border-radius: 5px;

@@ -1,43 +1,43 @@
 import { useState } from 'react';
 import { Table } from 'evergreen-ui';
 import { Link } from 'react-router-dom';
+import '../styles/DetallesCliente.css';
 
-
-const profiles = [
-    { id: 1, name: 'Pedro', lastActivity: '2022-12-01', ltv: 50 },
-    { id: 2, name: 'Juan', lastActivity: '2022-11-25', ltv: 80 },
-    { id: 3, name: 'Maria', lastActivity: '2022-11-10', ltv: 30 },
-    { id: 4, name: 'Luis', lastActivity: '2022-10-25', ltv: 75 },
-    { id: 5, name: 'Sofia', lastActivity: '2022-10-10', ltv: 60 },
+const perfiles = [
+  { id: 1, nombre: 'Pedro', ultimaActividad: '2022-12-01', cantidadObras: 50 },
+  { id: 2, nombre: 'Juan', ultimaActividad: '2022-11-25', cantidadObras: 80 },
+  { id: 3, nombre: 'Maria', ultimaActividad: '2022-11-10', cantidadObras: 30 },
+  { id: 4, nombre: 'Luis', ultimaActividad: '2022-10-25', cantidadObras: 75 },
+  { id: 5, nombre: 'Sofia', ultimaActividad: '2022-10-10', cantidadObras: 60 },
 ];
 
-const Tables = () => {
-  const [filter, setFilter] = useState('');
+const Tabla = () => {
+  const [filtro, setFiltro] = useState('');
 
-  const nombreFiltrado = profiles.filter((profile) =>
-    profile.name.toLowerCase().includes(filter.toLowerCase())
+  const perfilesFiltrados = perfiles.filter((perfil) =>
+    perfil.nombre.toLowerCase().includes(filtro.toLowerCase())
   );
 
   return (
     <Table>
       <Table.Head>
         <Table.SearchHeaderCell 
-          onChange={(value) => setFilter(value)} 
+          onChange={(valor) => setFiltro(valor)} 
           placeholder='Filtrar por nombre...'
         />
         <Table.TextHeaderCell>Fecha de ingreso</Table.TextHeaderCell>
         <Table.TextHeaderCell>Cantidad de obras</Table.TextHeaderCell>
       </Table.Head>
       <Table.Body height={240}>
-        {nombreFiltrado.map((profile) => (
-          <Table.Row key={profile.id} isSelectable onSelect={() => alert(profile.name)}>
+        {perfilesFiltrados.map((perfil) => (
+          <Table.Row key={perfil.id} isSelectable>
             <Table.TextCell>
-            <Link to={`/cliente/${profile.id}`} style={{ textDecoration: 'none', color: 'blue' }}>
-                {profile.name}
+              <Link to={`/detallescliente?id=${perfil.id}`} style={{ textDecoration: 'none', color: 'blue' }}>
+                {perfil.nombre}
               </Link>
-              {profile.name}</Table.TextCell>
-            <Table.TextCell>{profile.lastActivity}</Table.TextCell>
-            <Table.TextCell isNumber>{profile.ltv}</Table.TextCell>
+            </Table.TextCell>
+            <Table.TextCell>{perfil.ultimaActividad}</Table.TextCell>
+            <Table.TextCell isNumber>{perfil.cantidadObras}</Table.TextCell>
           </Table.Row>
         ))}
       </Table.Body>
@@ -45,4 +45,4 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default Tabla;
